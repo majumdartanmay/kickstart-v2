@@ -108,9 +108,17 @@ vim.lsp.config('ts_ls', {
   single_file_support = true,
 })
 
-print 'Hello world'
-print 'Hello world'
-print 'Hello world'
-
 -- print(vim.inspect(require('lspconfig').biome.document_config))
 vim.lsp.enable 'ts_ls'
+
+
+-- harpoon
+--
+
+-- REQUIRED
+local harpoon = require('harpoon')
+harpoon:setup()
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "3a", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
