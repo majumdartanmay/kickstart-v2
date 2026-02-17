@@ -2,4 +2,29 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      delete_to_trash = true,
+      keymaps = {
+        ['gy'] = 'actions.yank_entry',
+      },
+    },
+    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+    config = function()
+      require('oil').setup {
+        keymaps = {
+          ['gy'] = 'actions.yank_entry',
+          ['<C-s>'] = false,
+        },
+      }
+    end,
+    lazy = false,
+  },
+
+  -- 🔽 Add another plugin here
+  {
+    'tpope/vim-fugitive',
+  },
+}
