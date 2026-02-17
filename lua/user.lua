@@ -101,3 +101,16 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 vim.wo.relativenumber = true
+
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+
+vim.lsp.config('ts_ls', {
+  single_file_support = true,
+})
+
+print 'Hello world'
+print 'Hello world'
+print 'Hello world'
+
+-- print(vim.inspect(require('lspconfig').biome.document_config))
+vim.lsp.enable 'ts_ls'

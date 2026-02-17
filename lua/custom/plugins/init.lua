@@ -27,4 +27,7 @@ return {
   {
     'tpope/vim-fugitive',
   },
+  {
+    'nvim-lualine/lualine.nvim',
+  },
 }
