@@ -95,6 +95,17 @@ vim.keymap.set('n', '2c', function()
   vim.fn.setreg('*', filePath)
 end, { noremap = true, silent = true, desc = 'Print buffer path' })
 
+vim.keymap.set('n', '3c', function()
+  local filePath = vim.api.nvim_buf_get_name(0)
+  if filePath == '' then
+    print 'No buffer is open. Aborting copy-paste.'
+    return
+  end
+  local bufferName = vim.fn.fnamemodify(filePath, ':t')
+  vim.fn.setreg('+', bufferName)
+  print(('Copied: `%s`'):format(bufferName))
+end, { noremap = true, silent = true, desc = 'Copy buffer name to clipboard' })
+
 -- Primagen keymapping
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
